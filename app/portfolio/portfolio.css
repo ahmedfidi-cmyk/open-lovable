@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+.portfolio-root {
+  --bg: 0 0% 4%;
+  --surface: 0 0% 8%;
+  --text: 0 0% 96%;
+  --muted: 0 0% 53%;
+  --stroke: 0 0% 12%;
+  --accent: 0 0% 96%;
+
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', serif;
+
+  background-color: hsl(var(--bg));
+  color: hsl(var(--text));
+  font-family: var(--font-body);
+  min-height: 100vh;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.portfolio-root .font-body { font-family: var(--font-body); }
+.portfolio-root .font-display { font-family: var(--font-display); }
+
+/* HSL token helpers (scoped) */
+.portfolio-root .bg-bg { background-color: hsl(var(--bg)); }
+.portfolio-root .bg-surface { background-color: hsl(var(--surface)); }
+.portfolio-root .bg-stroke { background-color: hsl(var(--stroke)); }
+.portfolio-root .text-text-primary { color: hsl(var(--text)); }
+.portfolio-root .text-muted { color: hsl(var(--muted)); }
+.portfolio-root .border-stroke { border-color: hsl(var(--stroke)); }
+
+.portfolio-root .accent-gradient {
+  background: linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+}
+
+.portfolio-root .accent-gradient-animated {
+  background: linear-gradient(90deg, #89AACC 0%, #4E85BF 50%, #89AACC 100%);
+  background-size: 200% 200%;
+  animation: portfolio-gradient-shift 6s ease infinite;
+}
+
+/* Selection */
+.portfolio-root ::selection {
+  background: #4E85BF;
+  color: hsl(var(--text));
+}
+
+/* Smooth scroll */
+.portfolio-root {
+  scroll-behavior: smooth;
+}
+
+/* --- Animations --- */
+@keyframes portfolio-scroll-down {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+@keyframes portfolio-role-fade-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes portfolio-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.portfolio-root .animate-scroll-down {
+  animation: portfolio-scroll-down 1.5s ease-in-out infinite;
+}
+
+.portfolio-root .animate-role-fade-in {
+  animation: portfolio-role-fade-in 0.4s ease-out;
+}
+
+@keyframes portfolio-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.portfolio-root .animate-pulse-dot { animation: portfolio-pulse-dot 1.8s ease-in-out infinite; }
+
+/* Halftone pattern */
+.portfolio-root .halftone {
+  background-image: radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Helpers */
+.portfolio-root .tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Hide page-level scrollbar when loading overlay is up — pleasant detail */
+.portfolio-root.loading-active { overflow: hidden; }
